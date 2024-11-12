@@ -6,13 +6,19 @@ namespace blackjack
 	{
 		static void Main(string[] args)
 		{
-			int penz = 2000;
+            Console.Write("Mekkora tét: ");
+			int penz=Convert.ToInt32(Console.ReadLine());
 			int kaszinopont = HuzLapot() + HuzLapot();
 			int userpont = HuzLapot() + HuzLapot();
-			Blackjack(kaszinopont,userpont);
-
+            Console.WriteLine($"Pénzed: {Blackjack(kaszinopont, userpont,penz)}");
+            Console.Write($"AKarsz még játszani(i/n): ");
+			char jatek=Convert.ToChar(Console.ReadLine());
+            if (jatek=='i')
+            {
+				Console.WriteLine($"Pénzed: {Blackjack(kaszinopont, userpont, penz)}");
+			}
         }
-		static void Blackjack(int kaszinopont,int userpont)
+		static int Blackjack(int kaszinopont,int userpont,int penz)
 		{
 
 
@@ -27,6 +33,7 @@ namespace blackjack
                 if (userpont==21)
                 {
                     Console.WriteLine("Gratulálok, nyertél.");
+					penz = penz * 2;
 					break;
                 }
 				else if (kaszinopont==21)
@@ -60,6 +67,7 @@ namespace blackjack
 								Console.WriteLine($"Felhasználó pontszám: {userpont}");
 								Console.WriteLine("Nyertél.");
 								fut = false;
+								penz = penz * 2;
 								break;
                             }
                             if (kaszinopont>16&&kaszinopont<22)
@@ -77,6 +85,7 @@ namespace blackjack
 									Console.WriteLine($"Kaszinó pontszám: {kaszinopont}");
 									Console.WriteLine($"Felhasználó pontszám: {userpont}");
 									Console.WriteLine("Nyertél, gratulálok.");
+									penz = penz * 2;
 									fut=false;
 									break;
                                 }
@@ -88,6 +97,7 @@ namespace blackjack
 						break;
                 }
             }
+			return penz;
         }
 
 		static int HuzLapot()
