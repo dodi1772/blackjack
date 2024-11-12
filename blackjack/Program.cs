@@ -17,6 +17,7 @@ namespace blackjack
 
 
 			bool fut = true;
+			int elso = 0;
             while (fut==true)
             {
 				Console.Clear();
@@ -28,11 +29,20 @@ namespace blackjack
                     Console.WriteLine("Gratulálok, nyertél.");
 					break;
                 }
-				else if (kaszinopont>16||userpont>21)
-				{
+				else if (kaszinopont==21)
+                {
                     Console.WriteLine("Vesztettél.");
 					break;
                 }
+                if (elso!=0)
+                {
+					if (kaszinopont > 16 || userpont > 21)
+					{
+						Console.WriteLine("Vesztettél.");
+						break;
+					}
+				}
+				elso += 1;
                 Console.Write("hit/stand: ");
 				string beker = Convert.ToString(Console.ReadLine());
 				switch (beker)
