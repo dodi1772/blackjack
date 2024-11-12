@@ -21,6 +21,7 @@ namespace blackjack
             {
 				Console.Clear();
 				Console.WriteLine($"Kaszinó pontszám: {kaszinopont}");
+
 				Console.WriteLine($"Felhasználó pontszám: {userpont}");
                 if (userpont==21)
                 {
